@@ -3,11 +3,7 @@
 # lowdb-js [![Node.js CI](https://github.com/RodnyE/lowdb/actions/workflows/node.js.yml/badge.svg)](https://github.com/rodnye/lowdb/actions/workflows/node.js.yml)
 
 
-This is a commonjs module for [lowdb@7.x](https://www.npmjs.com/package/lowdb/v/7.0.1). Has been refactored so that it can be used not only by ESM code.
-
-
----
-The original lowdb docs is below... 👇
+This is a commonjs module for [lowdb@7.x](https://www.npmjs.com/package/lowdb/v/7.0.1). Has been refactored so that it can be used NOT only by ESM code.
 
 # lowdb [![](http://img.shields.io/npm/dm/lowdb.svg?style=flat)](https://www.npmjs.org/package/lowdb) 
 
@@ -24,7 +20,7 @@ const db = await JSONFilePreset('db.json', { posts: [] })
 Use plain JavaScript to change data
 
 ```js
-const post = { id: 1, title: 'lowdb is awesome', views: 100 }
+const post = { id: 1, title: 'lowdb-js is awesome', views: 100 }
 
 // In two steps
 db.data.posts.push(post)
@@ -49,7 +45,7 @@ In the same spirit, query using native `Array` functions:
 const { posts } = db.data
 
 posts.at(0) // First post
-posts.filter((post) => post.title.includes('lowdb')) // Filter by title
+posts.filter((post) => post.title.includes('lowdb-js')) // Filter by title
 posts.find((post) => post.id === 1) // Find by id
 posts.toSorted((a, b) => a.views - b.views) // Sort by views
 ```
@@ -87,15 +83,18 @@ It's that simple. `db.data` is just a JavaScript object, no magic.
 ## Install
 
 ```sh
-npm install lowdb
+npm install lowdb-js
 ```
 
 ## Usage
 
-_Lowdb is a pure ESM package. If you're having trouble using it in your project, please [read this](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c)._
+_lowdb-js is compatible with both ESM and CommonJS. Previously, original lowdb was a pure ESM package, but with this refactoring, we've restored support for CommonJS..._
 
 ```js
-import { JSONFilePreset } from 'lowdb/node'
+import { JSONFilePreset } from 'lowdb-js/node'
+// or
+// const { JSONFilePreset } = require('lowdb-js/node');
+
 
 // Read or create db.json
 const defaultData = { posts: [] }
@@ -138,8 +137,8 @@ db.data.messages.push(1) // ❌ TypeScript error
 You can extend lowdb with Lodash (or other libraries). To be able to extend it, we're not using `JSONPreset` here. Instead, we're using lower components.
 
 ```ts
-import { Low } from 'lowdb'
-import { JSONFile } from 'lowdb/node'
+import { Low } from 'lowdb-js'
+import { JSONFile } from 'lowdb-js/node'
 import lodash from 'lodash'
 
 type Post = {
@@ -194,8 +193,8 @@ Lowdb has two classes (for asynchronous and synchronous adapters).
 #### `new Low(adapter, defaultData)`
 
 ```js
-import { Low } from 'lowdb'
-import { JSONFile } from 'lowdb/node'
+import { Low } from 'lowdb-js'
+import { JSONFile } from 'lowdb-js/node'
 
 const db = new Low(new JSONFile('file.json'), {})
 await db.read()
@@ -205,8 +204,8 @@ await db.write()
 #### `new LowSync(adapterSync, defaultData)`
 
 ```js
-import { LowSync } from 'lowdb'
-import { JSONFileSync } from 'lowdb/node'
+import { LowSync } from 'lowdb-js'
+import { JSONFileSync } from 'lowdb-js/node'
 
 const db = new LowSync(new JSONFileSync('file.json'), {})
 db.read()
@@ -273,7 +272,7 @@ db.data = { key: 'value' }
 Adapters for reading and writing JSON files.
 
 ```js
-import { JSONFile, JSONFileSync } from 'lowdb/node'
+import { JSONFile, JSONFileSync } from 'lowdb-js/node'
 
 new Low(new JSONFile(filename), {})
 new LowSync(new JSONFileSync(filename), {})
@@ -284,7 +283,7 @@ new LowSync(new JSONFileSync(filename), {})
 In-memory adapters. Useful for speeding up unit tests. See [`src/examples/`](src/examples) directory.
 
 ```js
-import { Memory, MemorySync } from 'lowdb'
+import { Memory, MemorySync } from 'lowdb-js'
 
 new Low(new Memory(), {})
 new LowSync(new MemorySync(), {})
@@ -295,7 +294,7 @@ new LowSync(new MemorySync(), {})
 Synchronous adapter for `window.localStorage` and `window.sessionStorage`.
 
 ```js
-import { LocalStorage, SessionStorage } from 'lowdb/browser'
+import { LocalStorage, SessionStorage } from 'lowdb-js/browser'
 new LowSync(new LocalStorage(name), {})
 new LowSync(new SessionStorage(name), {})
 ```
@@ -311,7 +310,7 @@ Adapters for reading and writing text. Useful for creating custom adapters.
 Adapters for easily supporting other data formats or adding behaviors (encrypt, compress...).
 
 ```js
-import { DataFile } from 'lowdb'
+import { DataFile } from 'lowdb-js'
 new DataFile(filename, {
   parse: YAML.parse,
   stringify: YAML.stringify
@@ -386,8 +385,8 @@ To create an adapter for another format than JSON, you can use `TextFile` or `Te
 For example:
 
 ```js
-import { Adapter, Low } from 'lowdb'
-import { TextFile } from 'lowdb/node'
+import { Adapter, Low } from 'lowdb-js'
+import { TextFile } from 'lowdb-js/node'
 import YAML from 'yaml'
 
 class YAMLFile {
