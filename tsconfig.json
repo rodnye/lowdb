@@ -3,8 +3,9 @@
     "outDir": "./lib",
     "target": "ES2015",
     "module": "CommonJS", 
-    "lib": ["ES2015"],
-    "esModuleInterop": true
+    "lib": ["DOM", "DOM.Iterable", "ES2015"],
+    "esModuleInterop": true,
+    "declaration": true
   },
   "exclude": ["**/*.test.ts", "./src/examples"]
 }
