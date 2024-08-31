@@ -1,6 +1,10 @@
 {
-  "extends": "@sindresorhus/tsconfig",
   "compilerOptions": {
-    "outDir": "./lib"
-  }
+    "outDir": "./lib",
+    "target": "ES2015",
+    "module": "CommonJS", 
+    "lib": ["ES2015"],
+    "esModuleInterop": true
+  },
+  "exclude": ["**/*.test.ts", "./src/examples"]
 }

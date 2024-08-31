@@ -1,6 +1,6 @@
 {
-  "name": "lowdb",
-  "version": "7.0.1",
+  "name": "lowdb-js",
+  "version": "0.0.1",
   "description": "Tiny local JSON database for Node, Electron and the browser",
   "keywords": [
     "database",
@@ -14,20 +14,20 @@
     "localStorage",
     "sessionStorage",
     "browser",
-    "esm"
+    "cjs",
+    "commonjs"
   ],
-  "homepage": "https://github.com/typicode/lowdb#readme",
+  "homepage": "https://github.com/rodnye/lowdb#readme",
   "bugs": {
-    "url": "https://github.com/typicode/lowdb/issues"
+    "url": "https://github.com/rodnye/lowdb/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/typicode/lowdb.git"
+    "url": "git+https://github.com/rodnye/lowdb.git"
   },
-  "funding": "https://github.com/sponsors/typicode",
+  "funding": "https://github.com/sponsors/rodnye",
   "license": "MIT",
-  "author": "Typicode <typicode@gmail.com>",
-  "type": "module",
+  "author": "Rodny Estrada <rrodnyestrada1@gmail.com>",
   "exports": {
     ".": "./lib/index.js",
     "./node": "./lib/node.js",
@@ -54,8 +54,7 @@
     "lint": "eslint src --ext .ts --ignore-path .gitignore",
     "build": "del-cli lib && tsc",
     "prepublishOnly": "npm run build",
-    "postversion": "git push --follow-tags && npm publish",
-    "prepare": "husky install"
+    "postversion": "git push --follow-tags && npm publish"
   },
   "dependencies": {
     "steno": "^4.0.2"
@@ -72,7 +71,6 @@
     "del-cli": "^5.1.0",
     "eslint": "^8.56.0",
     "express-async-handler": "^1.2.0",
-    "husky": "^8.0.3",
     "lodash": "^4.17.21",
     "tempy": "^3.1.0",
     "ts-node": "^10.9.2",
