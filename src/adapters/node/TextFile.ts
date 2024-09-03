@@ -2,7 +2,7 @@ import { PathLike, readFileSync, renameSync, writeFileSync } from 'node:fs'
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 
-import { Writer } from 'steno'
+import { Writer } from 'steno-js'
 
 import { Adapter, SyncAdapter } from '../../core/Low.js'
 
